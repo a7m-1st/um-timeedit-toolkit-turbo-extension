@@ -24,7 +24,11 @@ This SDK provides a foundation for students and developers to build innovative t
 -   [Author](#author)
 
 ## Installation & Setup
-
+[![Watch the video](https://img.youtube.com/vi/_5jY8XW82CE/0.jpg)](https://www.youtube.com/watch?v=_5jY8XW82CE)
+1. Select the latest release, install the *dist.zip* and unzip it.
+2. Go to extensions by `chrome://extensions` and click on *Load unpacked*.
+3. Select the unzipped /dist folder from (1) to load it.
+3. Navigate to `https://cloud.timeedit.net/my_um/web/students/` and the extension should popup when loaded successfully.
 
 ## Building Blocks for Timetable Applications
 
