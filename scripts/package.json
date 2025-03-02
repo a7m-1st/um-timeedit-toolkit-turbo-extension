@@ -1,0 +1,23 @@
+{
+  "name": "scripts",
+  "version": "1.0.0",
+  "description": "This folder contains the scripts used to run this extension",
+  "main": "contentScript.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "ContentScript",
+    "Service-worker"
+  ],
+  "author": "a7m-1st, damnitjoshua",
+  "license": "MIT",
+  "dependencies": {
+    "@types/node": "^22.13.5",
+    "fs": "^0.0.1-security",
+    "typescript": "^5.7.3"
+  },
+  "devDependencies": {
+    "@types/chrome": "^0.0.306"
+  }
+}

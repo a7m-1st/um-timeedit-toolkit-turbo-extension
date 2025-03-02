@@ -1,2 +1,7 @@
 .DS_Store
 timetable_data.json
+
+scripts/node_modules
+sch-ext/node_modules
+sch-ext/dist.pem
+sch-ext/dist.crx
