@@ -1,3 +1,5 @@
+> ⚠ **Warning:** The **Timetable Extension Turbo Mode** is currently **not stable**. You may experience unexpected behavior or crashes. Use it at your own risk. We are actively working on improvements!
+
 # Universiti Malaya Timetable Software Development Kit
 
 Credits to Joshua: https://github.com/damnitjoshua/um-timeedit-timetable-toolkit
