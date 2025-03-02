@@ -1,4 +1,5 @@
 # Universiti Malaya Timetable Software Development Kit
+Credits to Joshua: https://github.com/damnitjoshua/um-timeedit-timetable-toolkit
 
 This SDK provides a foundation for students and developers to build innovative timetable applications for Universiti Malaya (UM). By leveraging data from the UM TimeEdit system, this tool aims to democratize access to timetable information and foster the creation of user-friendly and customized scheduling solutions.
 
@@ -12,44 +13,79 @@ This toolkit interacts with the TimeEdit API to provide essential data for timet
 4.  **Raw Data Export (JSON):**  Facilitates the download of all extracted data into a single `course_events_with_details.json` file directly within the browser environment. This raw JSON output serves as the initial dataset for further processing and application integration.
 5.  **Structured Data Refinement (Node.js):** Includes a `cleaner.js` script (Node.js) to transform the raw JSON data into a more organized and application-ready `timetable_data.json` file. This process restructures the data for efficient programmatic access and simplifies the development of timetable functionalities.
 
-## Getting Started
+## Getting Started with the UM TimeEdit Toolkit Turbo Extension
 
-This toolkit is designed to be used in two distinct phases: data acquisition using `main.js` within a web browser, followed by data structuring using `cleaner.js` with Node.js. This separation allows for efficient data extraction and preparation for application development.
+This guide will help you get the UM TimeEdit Toolkit Turbo extension up and running in your Chrome browser for development and testing.
 
-### Phase 1: Data Acquisition with `main.js` (Browser Environment)
+### Prerequisites
 
-**Prerequisites:** You must be logged into the Universiti Malaya TimeEdit web interface (`https://cloud.timeedit.net/my_um/web/students/`) in your browser before executing `main.js`.
+-   Google Chrome Browser: This extension is designed for Chrome.
+-   Node.js and npm: You'll need Node.js and npm (Node Package Manager) installed to build the extension. Download them from [https://nodejs.org/](https://nodejs.org/).
+-   A Text Editor or IDE: Choose your preferred code editor (e.g., VS Code, Sublime Text, Atom).
 
-1.  **Obtain `main.js`:**
-    *   Clone the repository to access the `main.js` file.
+### Installation Steps
 
-2.  **Access the UM TimeEdit Website and Authenticate:**
-    *   Navigate to the UM TimeEdit login page (e.g., `https://cloud.timeedit.net/my_um/web/students/`) and log in with your valid UM credentials. **Login is mandatory for script execution.**
+1.  **Clone the Repository:**
 
-3.  **Open Browser Developer Console:**
-    *   Access your browser's Developer Tools / Inspector panel while still on the TimeEdit website. Common methods include:
-        *   **Right-click** on the webpage and select "Inspect" or "Inspect Element."
-        *   Keyboard Shortcuts:
-            *   **Chrome/Firefox/Edge (Windows/Linux):** `Ctrl + Shift + J` or `F12`
-            *   **Chrome/Firefox/Edge (Mac):** `Cmd + Option + J`
-            *   **Safari (Mac):** `Cmd + Option + C` (Ensure "Show Develop menu in menu bar" is enabled in Safari Preferences -> Advanced)
-    *   Navigate to the "Console" tab within the Developer Tools.
-
-4.  **Execute `main.js` Code:**
-    *   In the Console, **paste** the entire JavaScript code copied from `main.js`.
-    *   Press **Enter** to initiate script execution.
-
-5.  **Adjust Fetch Limit (Optional):**
-
-    Prior to pressing Enter, you can optionally modify the `maxItemsToFetch` variable within the pasted code to control the maximum number of items retrieved. Locate the following line:
-
-    ```javascript
-    const maxItemsToFetch = 29000;
+    ```bash
+    git clone https://github.com/YOUR_USERNAME/um-timeedit-toolkit-turbo-extension.git
+    cd um-timeedit-toolkit-turbo-extension/sch-ext
     ```
 
-    Modify `29000` to your desired limit and then press Enter. Exercise caution when increasing this value significantly to avoid potential API rate limiting.
+    Replace `YOUR_USERNAME` with your GitHub username.
 
-6.  **Download Raw JSON Data:** Upon successful script completion, the browser will automatically download a file named `course_events_with_details.json` to your browser's default download directory. This file contains the raw, extracted data in JSON format, ready for the next phase.
+2.  **Install Dependencies:**
+
+    ```bash
+    npm install
+    ```
+
+    This command installs all the necessary packages defined in the `package.json` file.
+
+3.  **Build the Extension:**
+
+    ```bash
+    npm run build
+    ```
+
+    This command uses webpack (configured in `webpack.config.js`) to bundle the extension's code into the `dist` directory.
+
+4.  **Load the Extension in Chrome:**
+
+    a.  Open Chrome and go to `chrome://extensions`.
+
+    b.  Enable "Developer mode" in the top right corner.
+
+    c.  Click "Load unpacked" and select the `dist` directory inside `um-timeedit-toolkit-turbo-extension/sch-ext`. (The full path will look something like `C:/Users/ASUS/Desktop/Personal Projects/um-timeedit-toolkit-turbo-extension/sch-ext/dist`)
+
+5.  **Using the Extension:**
+
+    a.  Navigate to the Universiti Malaya TimeEdit website (`https://cloud.timeedit.net/my_um/web/students/`).
+
+    b.  Log in with your UM credentials.
+
+    c.  The extension should now be active. Click the extension icon in the Chrome toolbar to open the popup.
+
+    d.  Enter the desired number of items to fetch and click "Fetch Courses".
+
+    e. Upon successful script completion, the browser will automatically download a file named `course_events_with_details.json` to your browser's default download directory. This file contains the raw, extracted data in JSON format, ready for the next phase.
+
+### Troubleshooting
+
+-   "Could not load extension" error: Double-check that you selected the `dist` directory when loading the unpacked extension. Also, ensure that your `manifest.json` file is correctly formatted.
+-   Extension not working on TimeEdit website: Make sure you are logged in to the correct TimeEdit URL (`https://cloud.timeedit.net/my_um/web/students/`). Also, verify that the `host_permissions` in your `manifest.json` include this URL.
+-   Content script not injecting: Check the background script (`scripts/background.ts`) and content script (`scripts/contentScript.ts`) for any errors. Use `console.log` statements to debug. Also, ensure that the content script is correctly specified in the `web_accessible_resources` section of `manifest.json`.
+
+### Development
+
+-   Automatic Rebuilds: Run `npm run watch` to automatically rebuild the extension whenever you make changes to the source code. You'll need to manually reload the extension in Chrome (`chrome://extensions`) to see the updates.
+
+
+### Note on Turbo Mode
+
+1.  When `turboMode` is disabled (`false`), concurrency is applied only between batches. Therefore, modules within each batch are not sorted.
+2.  When `turboMode` is enabled (`true`), full concurrency is applied, and the extracted modules are not sorted.
+
 
 ### Phase 2: Data Structuring with `cleaner.js` (Node.js Environment)
 
