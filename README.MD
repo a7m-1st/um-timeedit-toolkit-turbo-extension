@@ -1,16 +1,37 @@
 # Universiti Malaya Timetable Software Development Kit
+
 Credits to Joshua: https://github.com/damnitjoshua/um-timeedit-timetable-toolkit
 
 This SDK provides a foundation for students and developers to build innovative timetable applications for Universiti Malaya (UM). By leveraging data from the UM TimeEdit system, this tool aims to democratize access to timetable information and foster the creation of user-friendly and customized scheduling solutions.
+
+## Table of Contents
+
+-   [Installation](#Installation-&-Setup)
+-   [Building Blocks for Timetable Applications](#building-blocks-for-timetable-applications)
+-   [Getting Started with the UM TimeEdit Toolkit Turbo Extension](#getting-started-with-the-um-timeedit-toolkit-turbo-extension)
+    -   [Prerequisites](#prerequisites)
+    -   [Installation Steps](#installation-steps)
+    -   [Using the Extension](#using-the-extension)
+-   [Troubleshooting](#troubleshooting)
+-   [Development](#development)
+-   [Note on Turbo Mode](#note-on-turbo-mode)
+-   [Phase 2: Data Structuring with `cleaner.js` (Node.js Environment)](#phase-2-data-structuring-with-cleanerjs-nodejs-environment)
+-   [Contributing to the UM Timetable Ecosystem](#contributing-to-the-um-timetable-ecosystem)
+-   [License](#license)
+-   [Acknowledgements](#acknowledgements)
+-   [Author](#author)
+
+## Installation & Setup
+
 
 ## Building Blocks for Timetable Applications
 
 This toolkit interacts with the TimeEdit API to provide essential data for timetable software development. It offers the following key functionalities:
 
-1.  **Comprehensive Module Catalog Retrieval:**  Fetches an exhaustive list of all modules available within the UM TimeEdit system. This includes courses, events and other relevant entities, providing a complete inventory for application development.
-2.  **Detailed Module Information Acquisition:**  Retrieves in-depth specifications for each module. This encompasses crucial details like module codes, descriptions, and any other pertinent metadata necessary for enriching timetable applications.
-3.  **Event Data Extraction:**  Gathers all scheduled events (reservations) linked to each module. This core functionality provides the raw timetable data, including timings, dates, locations, and event types (e.g., Lecture, Tutorial), essential for building scheduling features.
-4.  **Raw Data Export (JSON):**  Facilitates the download of all extracted data into a single `course_events_with_details.json` file directly within the browser environment. This raw JSON output serves as the initial dataset for further processing and application integration.
+1.  **Comprehensive Module Catalog Retrieval:** Fetches an exhaustive list of all modules available within the UM TimeEdit system. This includes courses, events and other relevant entities, providing a complete inventory for application development.
+2.  **Detailed Module Information Acquisition:** Retrieves in-depth specifications for each module. This encompasses crucial details like module codes, descriptions, and any other pertinent metadata necessary for enriching timetable applications.
+3.  **Event Data Extraction:** Gathers all scheduled events (reservations) linked to each module. This core functionality provides the raw timetable data, including timings, dates, locations, and event types (e.g., Lecture, Tutorial), essential for building scheduling features.
+4.  **Raw Data Export (JSON):** Facilitates the download of all extracted data into a single `course_events_with_details.json` file directly within the browser environment. This raw JSON output serves as the initial dataset for further processing and application integration.
 5.  **Structured Data Refinement (Node.js):** Includes a `cleaner.js` script (Node.js) to transform the raw JSON data into a more organized and application-ready `timetable_data.json` file. This process restructures the data for efficient programmatic access and simplifies the development of timetable functionalities.
 
 ## Getting Started with the UM TimeEdit Toolkit Turbo Extension
@@ -19,7 +40,7 @@ This guide will help you get the UM TimeEdit Toolkit Turbo extension up and runn
 
 ### Prerequisites
 
--   Google Chrome Browser: This extension is designed for Chrome.
+-   Google Chrome Engine Browsers: This extension is designed for Chrome Engine browsers (Ms Edge, Chrome etc...).
 -   Node.js and npm: You'll need Node.js and npm (Node Package Manager) installed to build the extension. Download them from [https://nodejs.org/](https://nodejs.org/).
 -   A Text Editor or IDE: Choose your preferred code editor (e.g., VS Code, Sublime Text, Atom).
 
@@ -28,11 +49,9 @@ This guide will help you get the UM TimeEdit Toolkit Turbo extension up and runn
 1.  **Clone the Repository:**
 
     ```bash
-    git clone https://github.com/YOUR_USERNAME/um-timeedit-toolkit-turbo-extension.git
+    git clone https://github.com/a7m-1st/um-timeedit-toolkit-turbo-extension.git
     cd um-timeedit-toolkit-turbo-extension/sch-ext
     ```
-
-    Replace `YOUR_USERNAME` with your GitHub username.
 
 2.  **Install Dependencies:**
 
@@ -52,7 +71,7 @@ This guide will help you get the UM TimeEdit Toolkit Turbo extension up and runn
 
 4.  **Load the Extension in Chrome:**
 
-    a.  Open Chrome and go to `chrome://extensions`.
+    a.  Open Browser and go to `chrome://extensions`.
 
     b.  Enable "Developer mode" in the top right corner.
 
@@ -80,12 +99,10 @@ This guide will help you get the UM TimeEdit Toolkit Turbo extension up and runn
 
 -   Automatic Rebuilds: Run `npm run watch` to automatically rebuild the extension whenever you make changes to the source code. You'll need to manually reload the extension in Chrome (`chrome://extensions`) to see the updates.
 
-
 ### Note on Turbo Mode
 
 1.  When `turboMode` is disabled (`false`), concurrency is applied only between batches. Therefore, modules within each batch are not sorted.
 2.  When `turboMode` is enabled (`true`), full concurrency is applied, and the extracted modules are not sorted.
-
 
 ### Phase 2: Data Structuring with `cleaner.js` (Node.js Environment)
 
@@ -93,7 +110,7 @@ To facilitate efficient application development, the raw data from Phase 1 requi
 
 **`timetable_data.json` Structure for Application Development:**
 
-`timetable_data.json` is designed to be **module-centric**, grouping events by module code. This structure simplifies data access and manipulation within your timetable applications.  Within each module, activities are further categorized by type (e.g., "Lecture," "Tutorial"). Each activity type then contains an array of scheduled events, including time, day, and room details. This hierarchical structure is optimized for building features such as module-based timetable views, conflict detection, and personalized scheduling tools.
+`timetable_data.json` is designed to be **module-centric**, grouping events by module code. This structure simplifies data access and manipulation within your timetable applications. Within each module, activities are further categorized by type (e.g., "Lecture," "Tutorial"). Each activity type then contains an array of scheduled events, including time, day, and room details. This hierarchical structure is optimized for building features such as module-based timetable views, conflict detection, and personalized scheduling tools.
 
 **Execution Instructions for `cleaner.js`:**
 
@@ -105,10 +122,9 @@ To facilitate efficient application development, the raw data from Phase 1 requi
     ```
 
     This command will process the raw data and generate `timetable_data.json` in the same directory, providing you with the structured data ready for integration into your UM timetable application.
-    
+
      Example of json data:
-    
-  
+
     ```json
     {
       "moduleName": "INTRODUCTION TO DATA SCIENCE",
